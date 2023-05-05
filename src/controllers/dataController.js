@@ -1,8 +1,7 @@
-const SustainabilityService = require('../services/sustainabilityService')
-// const controllerUtils = require('../utils/controllerUtils')
+const DataService = require('../services/dataService')
 
 const saveData = (req, res) => {
-  SustainabilityService
+  DataService
     .saveData()
     .then(() => res.status(200))
     .catch((error) => res.status(400).json({ message: error }))

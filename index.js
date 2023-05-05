@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const connectDB = require('./src/config/database.js')
-const v1SustainabilityRouter = require('./src/v1/routes/sustainabilityRoutes')
+const v1DataRouter = require('./src/v1/routes/dataRoutes')
 
 // Start Express -----------------
 const app = express()
@@ -27,7 +27,7 @@ app.get('/api', (req, res) => {
   res.send('Welcome to DBApi')
 })
 
-app.use('/api/v1/sustainability', v1SustainabilityRouter)
+app.use('/api/v1/sustainability', v1DataRouter)
 
 // Server running ----------------
 const server = app.listen(app.get('port'), function () {
