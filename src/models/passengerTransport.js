@@ -11,20 +11,12 @@ const PassengerTransportSchema = new mongoose.Schema(
     name: {
       type: String
     },
-    data: [
-      {
-        year: {
-          type: Number
-        },
-        month: {
-          type: Number
-        },
-        value: {
-          type: Number
-        }
-      }
-    ]
-
+    date: {
+      type: Date
+    },
+    value: {
+      type: Number
+    }
   },
   { timestamps: true }
 )

@@ -6,7 +6,7 @@ const AirQualitySchema = new mongoose.Schema(
       type: String
     },
     aqi: {
-      type: String
+      type: Number
     },
     o_3: {
       type: Number

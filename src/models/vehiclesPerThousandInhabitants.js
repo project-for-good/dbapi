@@ -18,4 +18,4 @@ const VehiclesPerThousandInhabitantsSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('PassengerTransport', VehiclesPerThousandInhabitantsSchema)
+module.exports = mongoose.model('VehiclesPerThousandInhabitantsSchema', VehiclesPerThousandInhabitantsSchema)

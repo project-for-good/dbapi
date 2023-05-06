@@ -15,9 +15,9 @@ if (process.env.NODE_ENV !== 'test') { // prevent EADDRINUSE in parallel tests
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use(cors({
-  origin: process.env.DATA_COLLECTOR_ENDPOINT
-}))
+// app.use(cors({
+//   origin: process.env.DATA_COLLECTOR_ENDPOINT
+// }))
 
 // Connect Database --------------
 connectDB()
@@ -27,7 +27,7 @@ app.get('/api', (req, res) => {
   res.send('Welcome to DBApi')
 })
 
-app.use('/api/v1/sustainability', v1DataRouter)
+app.use('/api/v1', v1DataRouter)
 
 // Server running ----------------
 const server = app.listen(app.get('port'), function () {
