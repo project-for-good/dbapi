@@ -28,14 +28,16 @@ const saveAccuwheaterData = async (data) => {
 
 const saveFuelPricesMotorData = async (data) => {
   try {
-    const fuelParams = {
-      province: data.province,
-      type: data.type,
-      price_per_liter: data.result
-    }
-    const fuel = new FuelSchema(fuelParams)
-    await fuel.save()
-    return { success: 'true' }
+    data.forEach(async result => {
+      const element = {
+        province: result.province,
+        type: result.fuelType,
+        price_per_liter: result.result
+      }
+      const fuel = new FuelSchema(element)
+      await fuel.save()
+    })
+    return FuelSchema.find({ province: 'Baleares' })
   } catch (error) {
     return error
   }
@@ -43,14 +45,18 @@ const saveFuelPricesMotorData = async (data) => {
 
 const savePopulationIneData = async (data) => {
   try {
-    const populationParams = {
-      Location: data.location,
-      age: data.age,
-      year: data.year,
-      population: data.data
-    }
-    const population = new PopulationSchema(populationParams)
-    await population.save()
+    data.forEach(async result => {
+      const element = {
+        Location: result.location,
+        age: result.age,
+        year: result.year,
+        population: result.data
+      }
+      const population = new PopulationSchema(element)
+      await population.save()
+    })
+
+    return PopulationSchema.find({ Location: '04 Balears, Illes' })
   } catch (error) {
     return error
   }
@@ -58,15 +64,22 @@ const savePopulationIneData = async (data) => {
 
 const saveUrbanTravelsIneData = async (data) => {
   try {
-    const urbanTravelsParams = {
-      municipality: data.params[1],
-      transport_type: data.params[0],
-      name: data.params[2],
-      date: data.params[3],
-      value: data.result
-    }
-    const PassengerTransport = new PassengerTransportSchema(urbanTravelsParams)
-    await PassengerTransport.save()
+    data.forEach(async result => {
+      const month = result.params[3].split('M')[1]
+      const year = result.params[3].split('M')[0]
+      const element = {
+        municipality: result.params[1],
+        transport_type: result.params[0],
+        name: result.params[2],
+        date: new Date(`${year}/${month}/01`),
+        value: result.result
+      }
+      console.log(element)
+      const PassengerTransport = new PassengerTransportSchema(element)
+      await PassengerTransport.save()
+    })
+
+    return PassengerTransportSchema.find({ municipality: '07040 Palma' })
   } catch (error) {
     return error
   }
@@ -74,14 +87,18 @@ const saveUrbanTravelsIneData = async (data) => {
 
 const saveVehiclesData = async (data) => {
   try {
-    const urbanTravelsParams = {
-      municipality: data.municipality,
-      year: data.year,
-      total: data.total,
-      passengers_cars: data.passengers_cars
-    }
-    const vehicles = new VehiclesPerThousandInhabitantsSchema(urbanTravelsParams)
-    await vehicles.save()
+    data.forEach(async result => {
+      const element = {
+        municipality: result.municipality,
+        year: result.year,
+        type: result.total,
+        value: result.passengers_cars
+      }
+      const vehicles = new VehiclesPerThousandInhabitantsSchema(element)
+      await vehicles.save()
+    })
+
+    return VehiclesPerThousandInhabitantsSchema.find({ municipality: 'MALLORCA' })
   } catch (error) {
     return error
   }

@@ -8,14 +8,14 @@ const VehiclesPerThousandInhabitantsSchema = new mongoose.Schema(
     year: {
       type: Number
     },
-    total: {
-      type: Number
+    type: {
+      type: String
     },
-    passengers_cars: {
+    value: {
       type: Number
     }
   },
   { timestamps: true }
 )
 
-module.exports = mongoose.model('VehiclesPerThousandInhabitantsSchema', VehiclesPerThousandInhabitantsSchema)
+module.exports = mongoose.model('VehiclesPerThousandInhabitants', VehiclesPerThousandInhabitantsSchema)

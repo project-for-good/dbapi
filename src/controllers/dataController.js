@@ -15,7 +15,6 @@ const saveFuelPricesMotorData = (req, res) => {
 }
 
 const savepopulationIneData = (req, res) => {
-  console.log(req.body)
   DataService
     .savePopulationIneData(req.body)
     .then((result) => res.status(200).json(result))
@@ -23,7 +22,6 @@ const savepopulationIneData = (req, res) => {
 }
 
 const saveUrbanTravelsIneData = (req, res) => {
-  console.log(req.body)
   DataService
     .saveUrbanTravelsIneData(req.body)
     .then((result) => res.status(200).json(result))
