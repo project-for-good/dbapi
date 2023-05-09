@@ -14,4 +14,4 @@ COPY --from=build /app /app
 
 WORKDIR /app
 EXPOSE 80
-CMD ["server.js"]
+CMD ["index.js"]
